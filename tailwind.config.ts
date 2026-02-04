@@ -76,6 +76,12 @@ export default {
           weak: "hsl(var(--yield-weak))",
           bad: "hsl(var(--yield-bad))",
         },
+        ek: {
+          kritisch: "hsl(var(--ek-kritisch))",
+          ausreichend: "hsl(var(--ek-ausreichend))",
+          gut: "hsl(var(--ek-gut))",
+          "sehr-gut": "hsl(var(--ek-sehr-gut))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
