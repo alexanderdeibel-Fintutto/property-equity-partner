@@ -1,4 +1,4 @@
-import { Moon, Sun, LogIn, LogOut, Calculator, FolderOpen, CreditCard, Settings } from 'lucide-react';
+import { Moon, Sun, LogIn, LogOut, FolderOpen, CreditCard, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
 import { Link, useLocation } from 'react-router-dom';
@@ -13,6 +13,8 @@ import {
 import { createPortalSession } from '@/lib/stripe';
 import { useSubscription } from '@/hooks/useSubscription';
 import { useToast } from '@/hooks/use-toast';
+import logoSvg from '@/assets/fintutto-rechner-logo.svg';
+import heroBg from '@/assets/hero-gradient-bg.png';
 
 interface HeaderProps {
   onLoginClick: () => void;
@@ -49,30 +51,33 @@ export const Header = ({ onLoginClick }: HeaderProps) => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header
+      className="sticky top-0 z-50 w-full"
+      style={{
+        backgroundImage: `url(${heroBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center top',
+      }}
+    >
       <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-primary-foreground">
-            <Calculator className="h-4 w-4" />
-          </div>
-          <span className="text-xl font-bold gradient-text">Rechner</span>
+        <Link to="/" className="flex items-center">
+          <img src={logoSvg} alt="Fintutto Rechner" className="h-8" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-6">
           <Link
             to="/"
-            className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary ${
-              location.pathname === '/' ? 'text-primary' : 'text-muted-foreground'
+            className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-white/100 ${
+              location.pathname === '/' ? 'text-white' : 'text-white/70'
             }`}
           >
-            <Calculator className="h-4 w-4" />
             Rechner
           </Link>
           {user && (
             <Link
               to="/berechnungen"
-              className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary ${
-                location.pathname === '/berechnungen' ? 'text-primary' : 'text-muted-foreground'
+              className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-white/100 ${
+                location.pathname === '/berechnungen' ? 'text-white' : 'text-white/70'
               }`}
             >
               <FolderOpen className="h-4 w-4" />
@@ -81,8 +86,8 @@ export const Header = ({ onLoginClick }: HeaderProps) => {
           )}
           <Link
             to="/pricing"
-            className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary ${
-              location.pathname === '/pricing' ? 'text-primary' : 'text-muted-foreground'
+            className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-white/100 ${
+              location.pathname === '/pricing' ? 'text-white' : 'text-white/70'
             }`}
           >
             <CreditCard className="h-4 w-4" />
@@ -91,14 +96,14 @@ export const Header = ({ onLoginClick }: HeaderProps) => {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" onClick={toggleDarkMode}>
+          <Button variant="ghost" size="icon" onClick={toggleDarkMode} className="text-white/80 hover:text-white hover:bg-white/10">
             {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </Button>
 
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="border-white/30 text-white bg-white/10 hover:bg-white/20 hover:text-white">
                   <Settings className="h-4 w-4 mr-2" />
                   <span className="hidden sm:inline max-w-32 truncate">
                     {user.email}
@@ -130,7 +135,7 @@ export const Header = ({ onLoginClick }: HeaderProps) => {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Button onClick={onLoginClick} size="sm">
+            <Button onClick={onLoginClick} size="sm" className="bg-white/15 text-white border border-white/30 hover:bg-white/25">
               <LogIn className="h-4 w-4 mr-2" />
               Anmelden
             </Button>

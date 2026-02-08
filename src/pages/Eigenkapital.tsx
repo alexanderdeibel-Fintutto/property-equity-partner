@@ -27,7 +27,7 @@ const Eigenkapital = () => {
 
       {/* Hero Section with Background Image */}
       <div
-        className="relative text-white py-12 md:py-16 px-4 overflow-hidden"
+        className="relative text-white py-12 md:py-16 px-4 overflow-hidden -mt-16 pt-28 md:pt-32"
         style={{
           backgroundImage: `url(${heroBg})`,
           backgroundSize: 'cover',
