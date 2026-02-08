@@ -3,6 +3,7 @@ import { Progress } from '@/components/ui/progress';
 import { AlertCircle, CheckCircle2, AlertTriangle, TrendingUp, Percent, Euro, Home } from 'lucide-react';
 import type { EigenkapitalResults } from '@/types/eigenkapital';
 import { cn } from '@/lib/utils';
+import heroBg from '@/assets/hero-gradient-bg.png';
 
 interface EKResultsDisplayProps {
   results: EigenkapitalResults;
@@ -69,10 +70,17 @@ export function EKResultsDisplay({ results }: EKResultsDisplayProps) {
     <div className="space-y-4">
       {/* Primary Result Card */}
       <Card className="overflow-hidden">
-        <div className="gradient-primary p-6 text-primary-foreground">
+        <div 
+          className="p-6 text-white"
+          style={{
+            backgroundImage: `url(${heroBg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
           <p className="text-sm opacity-80 mb-1">Ihre Eigenkapitalquote</p>
           <div className="flex items-baseline gap-2">
-            <span className={cn('font-mono text-5xl font-bold', 'text-primary-foreground')}>
+            <span className="font-mono text-5xl font-bold text-white">
               {formatPercent(results.ek_quote)}
             </span>
           </div>

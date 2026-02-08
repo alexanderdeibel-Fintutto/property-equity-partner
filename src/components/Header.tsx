@@ -52,7 +52,10 @@ export const Header = ({ onLoginClick }: HeaderProps) => {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <span className="text-2xl font-bold gradient-text">Fintutto</span>
+          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-primary-foreground">
+            <Calculator className="h-4 w-4" />
+          </div>
+          <span className="text-xl font-bold gradient-text">Rechner</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-6">
